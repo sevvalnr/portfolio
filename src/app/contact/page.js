@@ -19,7 +19,7 @@ export default function ContactPage() {
             Contact Me
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            I'm always interested in new opportunities and exciting projects. 
+            I am always interested in new opportunities and exciting projects. 
             Feel free to reach out through any of the channels below.
           </p>
         </div>

@@ -3,7 +3,7 @@ import ProjectCard from '@/components/ProjectCard'
 export default function HomePage() {
   // Real projects from CV
   const projects = [
-    {
+      {
       title: "Interactive Reading Platform",
       description: "Full Stack Web & Mobile Application with AI. Built scalable EPUB reading platform with AI-powered recommendations and real-time features.",
       image: "bg-gradient-to-br from-purple-600 to-pink-600",
@@ -29,29 +29,28 @@ export default function HomePage() {
       <section className="min-h-screen flex items-center justify-center px-8 relative">
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-6xl md:text-7xl font-bold mb-6">
-            <span className="gradient-text">Hi, I'm Şevval.</span>
+            <span className="gradient-text">Hi, I&apos;m Şevval.</span>
             <span className="text-white ml-3">👋</span>
           </h1>
           <h2 className="text-3xl md:text-4xl font-semibold text-white mb-8">
             I build digital products.
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-            I'm an engineer focusing on web development. I'm providing freelance web development solutions.
+            I&apos;m an engineer focusing on web development. I&apos;m providing freelance web development solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
+ <Link 
               href="/#contact"
-            className="glass px-8 py-4 text-lg font-semibold text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all duration-300 hover:scale-105"
-              
-              >
+              className="glass px-8 py-4 text-lg font-semibold text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all duration-300 hover:scale-105"
+            >
               📬 Contact
-            </a>
-            <a 
+            </Link>
+            <Link 
               href="/cv"
               className="glass px-8 py-4 text-lg font-semibold text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all duration-300 hover:scale-105"
             >
               📄 View CV
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -103,7 +102,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">FullStack Solutions</h3>
               <p className="text-gray-300">
-                I provide technical solutions on fullstack platforms like WebFlow, Wix, Squarespace.
+            I&apos;m providing full-featured web services including web design, development and search engine optimization. I also like to use Django, AdonisJS, NextJS, React, Svelte, SolidJS.
               </p>
             </div>
           </div>
@@ -111,7 +110,7 @@ export default function HomePage() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 px-8">
+        <section className="py-20 px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h3 className="text-sm font-semibold text-[#00d4ff] mb-2">FEATURED WORK</h3>

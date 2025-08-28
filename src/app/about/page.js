@@ -19,7 +19,7 @@ export default function AboutPage() {
             Contact Me
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            I'm always interested in new opportunities and exciting projects. 
+            I am always interested in new opportunities and exciting projects. 
             Feel free to reach out through any of the channels below.
           </p>
         </div>
@@ -137,7 +137,7 @@ export default function AboutPage() {
               </div>
               <div className="flex items-center space-x-3">
                 <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-white">Interested in full-time positions</span>
+                <span className="text-white">Interested in full time positions</span>
               </div>
             </div>
           </div>
