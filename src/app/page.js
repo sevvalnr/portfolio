@@ -39,9 +39,13 @@ export default function HomePage() {
             I'm an engineer focusing on web development. I'm providing freelance web development solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="glass px-8 py-4 text-lg font-semibold text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all duration-300 hover:scale-105">
-              Contact
-            </button>
+            <a 
+              href="/#contact"
+            className="glass px-8 py-4 text-lg font-semibold text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all duration-300 hover:scale-105"
+              
+              >
+              📬 Contact
+            </a>
             <a 
               href="/cv"
               className="glass px-8 py-4 text-lg font-semibold text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all duration-300 hover:scale-105"

@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold gradient-text">My Portfolio</h3>
+            <h3 className="text-xl font-bold gradient-text">Şevval Nur Kibar</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
               Full-stack developer passionate about creating innovative web solutions and user experiences.
             </p>
@@ -114,7 +114,7 @@ export default function Footer() {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
-              © 2025 My Portfolio. All rights reserved.
+              © 2025 Şevval Nur Kibar. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors duration-300 text-sm">

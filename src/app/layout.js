@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export const metadata = {
-  title: 'My Portfolio',
+  title: 'Şevval Nur Kibar',
   description: 'Kişisel portföy sitesi',
 }
 

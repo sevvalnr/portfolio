@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo/Brand */}
         <Link href="/" className="text-xl font-bold gradient-text hover:opacity-80 transition-opacity">
-          My Portfolio
+          Şevval Nur Kibar
         </Link>
 
         {/* Desktop Navigation */}

@@ -1,21 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
-  --gradient-start: #1a0b2e;
-  --gradient-middle: #16213e;
-  --gradient-end: #0f3460;
-  --neon-pink: #ff6b9d;
-  --neon-purple: #c44569;
-  --neon-teal: #00d4ff;
-  --neon-blue: #4facfe;
+ --background: #0c0505; /* Arka plan koyu kalabilir */
+  --foreground: #ffffff; /* Yazı rengi aynı kalabilir */
+  --gradient-start: #0a2e1a; /* koyu yeşil */
+  --gradient-middle: #114d2e; /* orta koyulukta yeşil */
+  --gradient-end: #1a7a4c; /* daha açık yeşil */
+  --neon-pink: #139956; /* parlak yeşil yerine neon yeşil */
+  --neon-purple: #00cc66; /* biraz daha koyu neon yeşil */
+  --neon-teal: #33ff99; /* açık neon yeşil/mentol ton */
+  --neon-blue: #49524d; /* pastel yeşil ton */
 }
+
 
 body {
   background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-middle) 50%, var(--gradient-end) 100%);
   color: var(--foreground);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif; /* içerik fontu */
+
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -75,7 +78,7 @@ body {
 
 /* Glass morphism effect */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(223, 37, 37, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
