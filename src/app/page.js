@@ -1,4 +1,5 @@
 import ProjectCard from '@/components/ProjectCard'
+import Link from "next/link"
 
 export default function HomePage() {
   // Real projects from CV
