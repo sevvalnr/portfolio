@@ -34,7 +34,7 @@ export default function HomePage() {
             <span className="text-white ml-3">👋</span>
           </h1>
           <h2 className="text-3xl md:text-4xl font-semibold text-white mb-8">
-            I build digital products.
+            I am software engineer.
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
             I&apos;m an engineer focusing on web development. I&apos;m providing freelance web development solutions.
@@ -60,10 +60,10 @@ export default function HomePage() {
       <section className="py-20 px-8">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-8">
-            I build websites, ecommerce stores, and web apps.
+            I build websites and mobile apps.
           </h2>
           <p className="text-xl text-gray-300 text-center mb-16 max-w-4xl mx-auto">
-            I'm providing full-featured web services including web design, development and search engine optimization. I also like to use Django, AdonisJS, NextJS, React, Svelte, SolidJS.
+            I'm providing full-featured web services including web design, development and database operations. I also like to use ,Golang, NextJS, React, Redux, Php Laravel .
           </p>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -76,7 +76,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Web apps</h3>
               <p className="text-gray-300">
-                I develop web applications in Python and JavaScript programming languages.
+                I develop web applications in Python and JavaScript, Php and Golang programming languages.
               </p>
             </div>
 
