@@ -25,13 +25,12 @@ export default function HomePage() {
   ]
 
   return (
-    <div className="relative">
+    <div className="relative h-screen overflow-y-scroll snap-y snap-mandatory">
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-8 relative">
+      <section className="min-h-screen h-screen flex items-center justify-center px-8 relative snap-start">
         <div className="text-center max-w-4xl mx-auto">
           <h1 className="text-6xl md:text-7xl font-bold mb-6">
             <span className="gradient-text">Hi, I&apos;m Şevval.</span>
-            <span className="text-white ml-3">👋</span>
           </h1>
           <h2 className="text-3xl md:text-4xl font-semibold text-white mb-8">
             I am software engineer.
@@ -57,7 +56,7 @@ export default function HomePage() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 px-8">
+      <section className="h-screen flex items-center px-8 snap-start">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-8">
             I build websites and mobile apps.
@@ -111,7 +110,7 @@ export default function HomePage() {
       </section>
 
       {/* Projects Section */}
-        <section className="py-20 px-8">
+      <section className="h-screen flex items-center px-8 snap-start">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h3 className="text-sm font-semibold text-[#00d4ff] mb-2">FEATURED WORK</h3>
@@ -136,7 +135,7 @@ export default function HomePage() {
       </section>
 
       {/* E-Commerce Section */}
-      <section className="py-20 px-8">
+      <section className="h-screen flex items-center px-8 snap-start">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h3 className="text-sm font-semibold text-[#00d4ff] mb-2">SOFTWARE SOLUTIONS</h3>
@@ -187,4 +186,3 @@ export default function HomePage() {
     </div>
   )
 }
-  

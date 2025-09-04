@@ -1,112 +1,57 @@
 'use client'
-import Link from 'next/link'
-import { useState } from 'react'
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+const navLinks = [
+  { href: '/', label: 'HOME' },
+  { href: '/about', label: 'ABOUT' }, 
+  { href: '/projects', label: 'PROJECTS' },
+  { href: '/cv', label: 'CV' },
+  { href: '/contact', label: 'CONTACT' }, 
+];
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
-
-  const closeMenu = () => {
-    setIsMenuOpen(false)
-  }
+  const pathname = usePathname();
 
   return (
-    <nav className="glass text-white px-6 py-4 fixed w-full top-0 z-50 shadow-lg">
-      <div className="container mx-auto flex justify-between items-center">
-        {/* Logo/Brand */}
-        <Link href="/" className="text-xl font-bold gradient-text hover:opacity-80 transition-opacity">
-          Şevval Nur Kibar
-        </Link>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex gap-8">
-          <Link 
-            href="/" 
-            className="hover:text-[#00d4ff] transition-colors duration-300 font-medium"
-          >
-            Ana Sayfa
-          </Link>
-          <Link 
-            href="/about" 
-            className="hover:text-[#00d4ff] transition-colors duration-300 font-medium"
-          >
-            Hakkımda
-          </Link>
-          <Link 
-            href="/projects" 
-            className="hover:text-[#00d4ff] transition-colors duration-300 font-medium"
-          >
-            Projeler
-          </Link>
-          <Link 
-            href="/cv" 
-            className="hover:text-[#00d4ff] transition-colors duration-300 font-medium"
-          >
-            CV
-          </Link>
-          <Link 
-            href="/contact" 
-            className="hover:text-[#00d4ff] transition-colors duration-300 font-medium"
-          >
-            İletişim
-          </Link>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden flex flex-col space-y-1 p-2"
-          aria-label="Toggle menu"
-        >
-          <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-          <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-          <span className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
-        </button>
+    <nav className="w-full flex justify-center pt-4 sm:pt-6 z-50">
+      <div className="flex items-center border-2 border-[#F5E1D8] rounded-full px-2 sm:px-6 py-1 sm:py-2 bg-transparent shadow-md gap-1 sm:gap-2 overflow-x-auto max-w-full hide-scrollbar">
+        {navLinks.map((link) => {
+          const isActive = pathname === link.href;
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`
+                relative px-2 sm:px-4 py-1 mx-0.5 sm:mx-1 rounded-full font-semibold transition-all duration-200 whitespace-nowrap
+                ${isActive
+                  ? 'bg-[#F5E1D8] text-[#0a2e1a] shadow'
+                  : 'text-[#F5E1D8] hover:bg-[#F5E1D8]/80 hover:text-[#0a2e1a]'
+                }
+              `}
+            >
+              {link.label}
+            </Link>
+          );
+        })}
+        {/* Circle accent */}
+        <span className="ml-1 sm:ml-2 w-7 h-7 flex items-center justify-center rounded-full border-2 border-[#F5E1D8] flex-shrink-0">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M15.5 13.5C13.5 15.5 10.5 15.5 8.5 13.5C6.5 11.5 6.5 8.5 8.5 6.5C9.5 5.5 11 5 12.5 5C12.5 7.5 14.5 9.5 17 9.5C17 11 16.5 12.5 15.5 13.5Z"
+              fill="#F5E1D8"
+            />
+          </svg>
+        </span>
       </div>
-
-      {/* Mobile Navigation */}
-      <div className={`md:hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-        <div className="glass mt-4 rounded-lg p-4 space-y-4">
-          <Link 
-            href="/" 
-            onClick={closeMenu}
-            className="block hover:text-[#00d4ff] transition-colors duration-300 font-medium"
-          >
-            Ana Sayfa
-          </Link>
-          <Link 
-            href="/about" 
-            onClick={closeMenu}
-            className="block hover:text-[#00d4ff] transition-colors duration-300 font-medium"
-          >
-            Hakkımda
-          </Link>
-          <Link 
-            href="/projects" 
-            onClick={closeMenu}
-            className="block hover:text-[#00d4ff] transition-colors duration-300 font-medium"
-          >
-            Projeler
-          </Link>
-          <Link 
-            href="/cv" 
-            onClick={closeMenu}
-            className="block hover:text-[#00d4ff] transition-colors duration-300 font-medium"
-          >
-            CV
-          </Link>
-          <Link 
-            href="/contact" 
-            onClick={closeMenu}
-            className="block hover:text-[#00d4ff] transition-colors duration-300 font-medium"
-          >
-            İletişim
-          </Link>
-        </div>
-      </div>
+      <style jsx>{`
+        .hide-scrollbar {
+          scrollbar-width: none; /* Firefox */
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none; /* Chrome, Safari, Opera */
+        }
+      `}</style>
     </nav>
-  )
+  );
 }
