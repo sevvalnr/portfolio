@@ -54,36 +54,33 @@ export default function ProjectDetailPage({ params }) {
 
 	if (!project) {
 		return (
-			<div className="text-center pt-20 text-white">Project not found.</div>
+			<div className="text-center pt-10 text-black">Project not found.</div>
 		);
 	}
 
 	return (
-		<div className="min-h-screen pt-20 pb-20 bg-gradient-to-br from-[#0a2e1a] via-[#114d2e] to-[#1a7a4c] relative overflow-hidden">
-			{/* Floating Neon Accents */}
-			<div className="neon-accent"></div>
-			<div className="neon-accent"></div>
-			<div className="neon-accent"></div>
-
-			<div className="max-w-7xl mx-auto px-2 md:px-4 flex flex-col lg:flex-row gap-8">
+		<div className="min-h-screen pt-10 pb-20 bg-[#ececbb]">
+			<div className="max-w-7xl mx-auto px-8 flex flex-col lg:flex-row gap-8">
 				{/* Main Project Display */}
 				<div className="flex-1 min-w-0">
 					<Link
 						href="/projects"
-						className="inline-block mb-6 text-[#26bb71] hover:underline text-lg"
+						className="inline-block mb-6 text-gray-600 hover:text-black transition-colors text-lg font-light"
 					>
 						← Back to Projects
 					</Link>
-					<div className="glass p-4 md:p-8 rounded-2xl shadow-xl mb-8">
-						<h1 className="text-2xl md:text-4xl font-serif font-bold gradient-text mb-4">
+					<div className="bg-white/50 p-8 rounded-sm border border-black/10 shadow-sm mb-8">
+						<h1 className="text-3xl md:text-4xl font-light text-black mb-6 tracking-tight">
 							{project.title}
 						</h1>
-						<p className="text-gray-300 mb-6">{project.description}</p>
-						<div className="flex flex-wrap gap-2 md:gap-3 mb-6">
+						<p className="text-gray-700 mb-8 leading-relaxed font-light text-lg">
+							{project.description}
+						</p>
+						<div className="flex flex-wrap gap-3 mb-8">
 							{project.tech.map((tech, idx) => (
 								<span
 									key={idx}
-									className="bg-gradient-to-br from-[#26bb71] to-[#646060] text-black px-3 py-1 md:px-4 md:py-2 rounded-full text-sm md:text-base font-semibold"
+									className="bg-black text-white px-4 py-2 rounded-full text-sm font-light"
 								>
 									{tech}
 								</span>
@@ -92,17 +89,17 @@ export default function ProjectDetailPage({ params }) {
 
 						{/* Image Gallery */}
 						{project.images && project.images.length > 0 && (
-							<div className="mb-6">
-								<h2 className="text-xl md:text-2xl font-bold text-white mb-3">
+							<div className="mb-8">
+								<h2 className="text-xl font-light text-black mb-4 tracking-wide">
 									Gallery
 								</h2>
-								<div className="flex space-x-3 md:space-x-4 overflow-x-auto pb-2">
+								<div className="flex space-x-4 overflow-x-auto pb-4">
 									{project.images.map((img, idx) => (
 										<img
 											key={idx}
 											src={img}
 											alt={`Screenshot ${idx + 1}`}
-											className="rounded-xl shadow-lg object-cover h-40 w-64 md:h-56 md:w-96 flex-shrink-0 border-2 border-[#26bb71]/30"
+											className="rounded-sm object-cover h-48 w-64 flex-shrink-0 border border-black/20"
 										/>
 									))}
 								</div>
@@ -112,13 +109,13 @@ export default function ProjectDetailPage({ params }) {
 						{/* Video Section */}
 						{project.video && (
 							<div className="mb-6">
-								<h2 className="text-xl md:text-2xl font-bold text-white mb-3">
+								<h2 className="text-xl font-light text-black mb-4 tracking-wide">
 									Demo Video
 								</h2>
 								<video
 									src={project.video}
 									controls
-									className="rounded-xl shadow-lg w-full max-h-[240px] md:max-h-[400px] border-2 border-[#26bb71]/30 bg-black"
+									className="rounded-sm w-full max-h-96 border border-black/20 bg-black"
 								/>
 							</div>
 						)}
@@ -126,77 +123,39 @@ export default function ProjectDetailPage({ params }) {
 				</div>
 
 				{/* Side Menu: Other Projects */}
-				<div className="w-full lg:w-64 flex-shrink-0">
-					<h2 className="text-lg md:text-xl font-bold text-white mb-3 md:mb-4">
+				<div className="w-full lg:w-80 flex-shrink-0">
+					<h2 className="text-xl font-light text-black mb-6 tracking-wide">
 						Other Projects
 					</h2>
-					<div className="flex lg:flex-col gap-3 md:gap-4 overflow-x-auto lg:overflow-x-visible pb-2">
+					<div className="flex flex-col gap-4">
 						{otherProjects.map((p) => (
 							<Link
 								key={p.id}
 								href={`/projects/${p.id}`}
-								className="block bg-[#114d2e]/80 hover:bg-[#26bb71]/30 rounded-xl p-2 md:p-4 shadow transition-all duration-200 border border-[#26bb71]/20 min-w-[160px] md:min-w-[200px] lg:min-w-0"
+								className="bg-white/50 hover:bg-white/70 rounded-sm p-4 border border-black/10 hover-lift transition-all duration-200"
 							>
-								<div className="flex items-center gap-2 md:gap-3">
+								<div className="flex items-center gap-4">
 									{p.images && p.images[0] && (
 										<img
 											src={p.images[0]}
 											alt={p.title}
-											className="w-10 h-10 md:w-14 md:h-14 object-cover rounded-lg border border-[#26bb71]/30"
+											className="w-16 h-16 object-cover rounded-sm border border-black/20"
 										/>
 									)}
-									<span className="text-white font-semibold text-xs md:text-base">
-										{p.title}
-									</span>
+									<div>
+										<h3 className="text-black font-light text-lg mb-1">
+											{p.title}
+										</h3>
+										<p className="text-gray-600 text-sm font-light line-clamp-2">
+											{p.description}
+										</p>
+									</div>
 								</div>
 							</Link>
 						))}
 					</div>
 				</div>
 			</div>
-
-			<style jsx>{`
-				.neon-accent {
-					position: absolute;
-					border-radius: 50%;
-					filter: blur(4px);
-					opacity: 0.4;
-					animation: float 6s ease-in-out infinite;
-				}
-				.neon-accent:nth-child(1) {
-					width: 100px;
-					height: 100px;
-					top: 10%;
-					right: 10%;
-					background: #006633;
-					animation-delay: 0s;
-				}
-				.neon-accent:nth-child(2) {
-					width: 150px;
-					height: 150px;
-					top: 30%;
-					right: 20%;
-					background: #2b6919;
-					animation-delay: 2s;
-				}
-				.neon-accent:nth-child(3) {
-					width: 80px;
-					height: 80px;
-					top: 60%;
-					right: 15%;
-					background: #008040;
-					animation-delay: 4s;
-				}
-				@keyframes float {
-					0%,
-					100% {
-						transform: translateY(0px) rotate(0deg);
-					}
-					50% {
-						transform: translateY(-20px) rotate(180deg);
-					}
-				}
-			`}</style>
 		</div>
 	);
 }

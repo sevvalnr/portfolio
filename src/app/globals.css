@@ -1,102 +1,155 @@
 @import "tailwindcss";
 
 :root {
- --background: #0c0505; /* Arka plan koyu kalabilir */
-  --foreground: #ffffff; /* Yazı rengi aynı kalabilir */
-  --gradient-start: #0a2e1a; /* koyu yeşil */
-  --gradient-middle: #114d2e; /* orta koyulukta yeşil */
-  --gradient-end: #1a7a4c; /* daha açık yeşil */
-  --neon-pink: #139956; /* parlak yeşil yerine neon yeşil */
-  --neon-purple: #00cc66; /* biraz daha koyu neon yeşil */
-  --neon-teal: #33ff99; /* açık neon yeşil/mentol ton */
-  --neon-blue: #49524d; /* pastel yeşil ton */
+  --background: #ececbb;
+  --foreground: #2a2a2a;
+  --gradient-start: #ececbb;
+  --gradient-middle: #ececbb;
+  --gradient-end: #ececbb;
+  --accent-color: #2a2a2a;
+  --muted-text: #5a5a5a;
+  --border-color: #ffffff;
 }
 
+.dark {
+  --background: #572821;
+  --foreground: #ececbb;
+  --gradient-start: #572821;
+  --gradient-middle: #572821;
+  --gradient-end: #572821;
+  --accent-color: #ececbb;
+  --muted-text: #a0a0a0;
+  --border-color: #ffffff;
+}
 
 body {
   background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-middle) 50%, var(--gradient-end) 100%);
   color: var(--foreground);
-
-  font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif; /* içerik fontu */
-
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* Neon accent elements */
-.neon-accent {
+/* Headings için Poppins fontu */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-poppins), sans-serif;
+}
+
+/* Subtle accent elements */
+.subtle-accent {
   position: absolute;
   border-radius: 50%;
   filter: blur(1px);
-  opacity: 0.6;
-  animation: float 6s ease-in-out infinite;
+  opacity: 0.3;
+  animation: float 8s ease-in-out infinite;
+  background: var(--accent-color);
 }
 
-.neon-accent:nth-child(1) {
-  background: var(--neon-pink);
-  width: 100px;
-  height: 100px;
-  top: 10%;
+.subtle-accent:nth-child(1) {
+  width: 120px;
+  height: 120px;
+  top: 15%;
   right: 10%;
   animation-delay: 0s;
 }
 
-.neon-accent:nth-child(2) {
-  background: var(--neon-purple);
-  width: 150px;
-  height: 150px;
-  top: 30%;
-  right: 20%;
-  animation-delay: 2s;
-}
-
-.neon-accent:nth-child(3) {
-  background: var(--neon-teal);
+.subtle-accent:nth-child(2) {
   width: 80px;
   height: 80px;
-  top: 60%;
+  top: 40%;
+  right: 25%;
+  animation-delay: 3s;
+}
+
+.subtle-accent:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  top: 65%;
   right: 15%;
-  animation-delay: 4s;
+  animation-delay: 6s;
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   50% {
-    transform: translateY(-20px) rotate(180deg);
+    transform: translateY(-15px) rotate(90deg);
   }
 }
 
-/* Gradient text effect */
-.gradient-text {
-  background: linear-gradient(135deg, var(--neon-pink), var(--neon-teal), var(--neon-blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Minimal text effect */
+.minimal-text {
+  color: var(--foreground);
+  font-weight: 300;
+  letter-spacing: -0.02em;
 }
 
-/* Glass morphism effect */
+/* Glass morphism effect - updated for light theme */
 .glass {
-  background: rgba(223, 37, 37, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(42, 42, 42, 0.1);
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - updated for light theme */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: var(--gradient-start);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, var(--neon-pink), var(--neon-teal));
-  border-radius: 4px;
+  background: var(--accent-color);
+  border-radius: 3px;
+  opacity: 0.3;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue));
+  background: var(--muted-text);
+  opacity: 0.5;
+}
+
+/* Additional utility classes for the light theme */
+.border-muted {
+  border-color: var(--border-color);
+  opacity: 0.8;
+}
+
+.text-muted {
+  color: var(--muted-text);
+}
+
+.hover-lift {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Tailwind base styles için font tanımları */
+@layer base {
+  html {
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-poppins), sans-serif;
+  }
 }

@@ -32,11 +32,26 @@ export default function ProjectsPage() {
 
   const containerRef = useRef(null);
   const [scales, setScales] = useState(Array(projects.length).fill(1));
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     const handleScroll = () => {
       const container = containerRef.current;
       if (!container) return;
+      
+      if (isMobile) {
+        // Mobile'da scale efektini kapat
+        setScales(Array(projects.length).fill(1));
+        return;
+      }
+
       const containerRect = container.getBoundingClientRect();
       const center = containerRect.left + containerRect.width / 2;
 
@@ -44,14 +59,13 @@ export default function ProjectsPage() {
         const cardRect = child.getBoundingClientRect();
         const cardCenter = cardRect.left + cardRect.width / 2;
         const distance = Math.abs(center - cardCenter);
-        // The closer to center, the bigger the scale (max 1.0, min 0.85)
         const scale = Math.max(0.85, 1 - distance / containerRect.width);
         return scale;
       });
       setScales(newScales);
     };
 
-    handleScroll(); // Initial call
+    handleScroll();
     const container = containerRef.current;
     if (container) {
       container.addEventListener('scroll', handleScroll, { passive: true });
@@ -60,51 +74,46 @@ export default function ProjectsPage() {
     return () => {
       if (container) container.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
+      window.removeEventListener('resize', checkMobile);
     };
-  }, [projects.length]);
+  }, [projects.length, isMobile]);
 
   return (
-    <div className="min-h-screen pt-20 pb-20 bg-gradient-to-br from-[#0a2e1a] via-[#114d2e] to-[#1a7a4c] relative overflow-hidden">
-      {/* Floating Neon Accents */}
-      <div className="neon-accent"></div>
-      <div className="neon-accent"></div>
-      <div className="neon-accent"></div>
-
-      <div className="max-w-6xl mx-auto px-2 sm:px-4">
+    <div className="min-h-screen pt-10 pb-20 bg-[var(--background)] transition-colors duration-300">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-10 md:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold gradient-text mb-4 sm:mb-6">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-light mb-4 sm:mb-6 text-[var(--foreground)] tracking-tight">
             My Projects
           </h1>
+          <p className="text-base sm:text-lg text-[var(--muted-text)] max-w-2xl mx-auto font-light leading-relaxed px-4">
+            A collection of my recent work showcasing full-stack development, 
+            AI/ML projects, and innovative digital solutions.
+          </p>
         </div>
 
-        {/* Horizontal Scroll Cards with scaling */}
-        <div className="flex justify-center items-center" style={{ height: '60vh' }}>
-          <div
-            ref={containerRef}
-            className="flex space-x-4 md:space-x-8 overflow-x-auto scrollbar-thin scrollbar-thumb-[#26bb71]/60 scrollbar-track-transparent snap-x snap-mandatory scroll-smooth px-2 sm:px-4 h-full mx-auto"
-            style={{ scrollSnapType: 'x mandatory', width: '85vw', maxWidth: '85vw' }}
-          >
+        {/* Mobile View - Vertical Scroll */}
+        <div className="block lg:hidden">
+          <div className="space-y-6 sm:space-y-8">
             {projects.map((project, idx) => (
               <Link
                 key={project.id}
                 href={`/projects/${project.id}`}
-                className="snap-center flex-shrink-0"
-                style={{
-                  width: '40vw', // Keep your original width
-                  maxWidth: '40vw',
-                  height: '90%',
-                  transform: `scale(${scales[idx]})`,
-                  zIndex: scales[idx] > 0.95 ? 10 : 1,
-                  transition: 'transform 0.5s cubic-bezier(.4,2,.6,1), z-index 0.2s',
-                }}
+                className="block"
               >
-                <div className="glass p-4 sm:p-8 rounded-2xl cursor-pointer h-full shadow-xl flex flex-col justify-center">
-                  <h3 className="text-lg sm:text-2xl md:text-3xl font-serif font-bold text-white mb-4 sm:mb-6">{project.title}</h3>
-                  <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 sm:gap-3">
+                <div className="bg-[var(--foreground)]/5 p-4 sm:p-6 rounded-sm border border-[var(--border-color)] cursor-pointer shadow-sm hover-lift">
+                  <h3 className="text-lg sm:text-xl font-light text-[var(--foreground)] mb-3 sm:mb-4 tracking-wide">
+                    {project.title}
+                  </h3>
+                  <p className="text-[var(--muted-text)] mb-4 sm:mb-6 text-sm leading-relaxed font-light">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech, tIdx) => (
-                      <span key={tIdx} className="bg-gradient-to-br from-[#26bb71] to-[#646060] text-black px-2 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-base font-semibold">
+                      <span 
+                        key={tIdx} 
+                        className="bg-[var(--foreground)] text-[var(--background)] px-2 sm:px-3 py-1 rounded-full text-xs font-light"
+                      >
                         {tech}
                       </span>
                     ))}
@@ -114,46 +123,91 @@ export default function ProjectsPage() {
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Neon accent keyframes */}
-      <style jsx>{`
-        .neon-accent {
-          position: absolute;
-          border-radius: 50%;
-          filter: blur(4px);
-          opacity: 0.4;
-          animation: float 6s ease-in-out infinite;
-        }
-        .neon-accent:nth-child(1) { 
-          width: 100px; 
-          height: 100px; 
-          top: 10%; 
-          right: 10%; 
-          background: #006633;
-          animation-delay: 0s; 
-        }
-        .neon-accent:nth-child(2) { 
-          width: 150px; 
-          height: 150px; 
-          top: 30%; 
-          right: 20%; 
-          background: #2B6919;
-          animation-delay: 2s; 
-        }
-        .neon-accent:nth-child(3) { 
-          width: 80px; 
-          height: 80px; 
-          top: 60%; 
-          right: 15%; 
-          background: #008040;
-          animation-delay: 4s; 
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(180deg); }
-        }
-      `}</style>
+        {/* Desktop View - Horizontal Scroll */}
+        <div className="hidden lg:flex justify-center items-center" style={{ height: '60vh' }}>
+          <div
+            ref={containerRef}
+            className="flex space-x-6 md:space-x-8 overflow-x-auto scrollbar-thin scrollbar-thumb-[var(--foreground)]/20 scrollbar-track-transparent snap-x snap-mandatory scroll-smooth px-4 h-full mx-auto"
+            style={{ scrollSnapType: 'x mandatory', width: '85vw', maxWidth: '85vw' }}
+          >
+            {projects.map((project, idx) => (
+              <Link
+                key={project.id}
+                href={`/projects/${project.id}`}
+                className="snap-center flex-shrink-0"
+                style={{
+                  width: '40vw',
+                  maxWidth: '40vw',
+                  height: '90%',
+                  transform: `scale(${scales[idx]})`,
+                  zIndex: scales[idx] > 0.95 ? 10 : 1,
+                  transition: 'transform 0.5s cubic-bezier(.4,2,.6,1), z-index 0.2s',
+                }}
+              >
+                <div className="bg-[var(--foreground)]/5 p-6 rounded-sm border border-[var(--border-color)] cursor-pointer h-full shadow-sm flex flex-col justify-center hover-lift">
+                  <h3 className="text-xl md:text-2xl font-light text-[var(--foreground)] mb-4 tracking-wide">
+                    {project.title}
+                  </h3>
+                  <p className="text-[var(--muted-text)] mb-6 text-sm leading-relaxed font-light">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, tIdx) => (
+                      <span 
+                        key={tIdx} 
+                        className="bg-[var(--foreground)] text-[var(--background)] px-3 py-1 rounded-full text-xs font-light"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Project Stats */}
+        <div className="mt-12 sm:mt-16 lg:mt-20">
+          <div className="bg-[var(--foreground)]/5 p-6 sm:p-8 rounded-sm border border-[var(--border-color)]">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center">
+              <div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-light text-[var(--foreground)] mb-1 sm:mb-2">
+                  {projects.length}+
+                </div>
+                <div className="text-[var(--muted-text)] text-xs sm:text-sm font-light">
+                  Projects Completed
+                </div>
+              </div>
+              <div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-light text-[var(--foreground)] mb-1 sm:mb-2">
+                  10+
+                </div>
+                <div className="text-[var(--muted-text)] text-xs sm:text-sm font-light">
+                  Technologies
+                </div>
+              </div>
+              <div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-light text-[var(--foreground)] mb-1 sm:mb-2">
+                  2+
+                </div>
+                <div className="text-[var(--muted-text)] text-xs sm:text-sm font-light">
+                  Years Experience
+                </div>
+              </div>
+              <div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-light text-[var(--foreground)] mb-1 sm:mb-2">
+                  100%
+                </div>
+                <div className="text-[var(--muted-text)] text-xs sm:text-sm font-light">
+                  Efficiency
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
