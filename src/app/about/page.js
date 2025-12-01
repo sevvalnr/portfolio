@@ -28,28 +28,23 @@ export default function AboutPage() {
           <div className="lg:w-3/5">
             <div className="bg-[var(--foreground)]/5 p-8 rounded-sm border border-[var(--border-color)]">
               <p className="text-lg text-[var(--muted-text)] font-light leading-relaxed mb-6">
-                Recent software engineering graduate. I am passionate about full-stack 
-                development, cloud technologies, and creating scalable digital solutions.
+I’m Şevval Nur Kibar — a recent Computer Engineering graduate and a Full-Stack Developer who enjoys building products that run in production and create real value for users. I see software as a creative problem-solving field where ideas turn into working systems.
               </p>
               
               <p className="text-lg text-[var(--muted-text)] font-light leading-relaxed mb-6">
-                My goal is to make my mark in the tech industry by building innovative 
-                applications that solve real-world problems and enhance user experiences.
+                I started working on real projects early in my studies and I’m currently contributing to a large-scale MMA analytics platform. My work focuses on frontend & backend integration, API development, testing, performance improvements and building maintainable code architectures.
               </p>
               
               <p className="text-lg text-[var(--muted-text)] font-light leading-relaxed mb-6">
-                I specialize in modern web technologies including React, Next.js, Node.js, 
-                and cloud platforms, with a strong focus on clean code and best practices.
+               Technologies I work with the most: React, TypeScript, Go, Python, PostgreSQL/MongoDB, Docker.
               </p>
               
               <p className="text-lg text-[var(--muted-text)] font-light leading-relaxed mb-6">
-                I would love to work with teams and companies who will give me the opportunity 
-                to apply my technical skills and contribute to meaningful digital products.
+Beyond full-stack development, I have a strong interest in cognitive science and neuroscience-inspired approaches in AI — especially how biological learning and decision-making mechanisms can shape more adaptive and intelligent software systems.
               </p>
               
               <p className="text-lg text-[var(--muted-text)] font-light leading-relaxed">
-                Reach out if you think we can create impactful software solutions together 
-                and push the boundaries of what's possible in the digital space.
+               I’m a developer who loves learning, improving, and shipping reliable systems. My goal is to build scalable and impactful software that brings real value to people.
               </p>
             </div>
           </div>

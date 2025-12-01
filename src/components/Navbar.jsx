@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <nav className="w-full flex justify-center pt-4 sm:pt-6 z-50">
-      <div className="flex items-center border-2 border-[#532813] dark:border-[#5A0E24] rounded-full px-2 sm:px-6 py-1 sm:py-2 bg-transparent shadow-md gap-1 sm:gap-2 overflow-x-auto max-w-full hide-scrollbar transition-colors duration-300">
+      <div className="flex items-center border-2 border-[#532813] dark:border-[#ececbb] rounded-full px-2 sm:px-6 py-1 sm:py-2 bg-transparent shadow-md gap-1 sm:gap-2 overflow-x-auto max-w-full hide-scrollbar transition-colors duration-300">
         {navLinks.map((link) => {
           const isActive = pathname === link.href;
           return (
@@ -33,8 +33,8 @@ export default function Navbar() {
               className={`
                 relative px-2 sm:px-4 py-1 mx-0.5 sm:mx-1 rounded-full font-semibold transition-all duration-200 whitespace-nowrap
                 ${isActive
-                  ? 'bg-[#3f261b] text-[#f7faf8] shadow dark:bg-[#5A0E24] dark:text-[#2a2a2a]'
-                  : 'text-[#632d13] hover:bg-[#632d13]/80 hover:text-[#cde0d6] dark:text-[#2a2a2a] dark:hover:bg-[#5A0E24]/80 dark:hover:text-[#F1F3E0]'
+                  ? 'bg-[#3f261b] text-[#f7faf8] shadow dark:bg-[#ececbb] dark:text-[#2a2a2a]'
+                  : 'text-[#632d13] hover:bg-[#632d13]/80 hover:text-[#cde0d6] dark:text-[#ececbb] dark:hover:bg-[#5A0E24]/80 dark:hover:text-[#F1F3E0]'
                 }
               `}
             >
